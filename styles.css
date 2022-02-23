@@ -1,0 +1,31 @@
+
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: midnightblue;
+    background: honeydew;
+    background: radial-gradient(circle, honeydew 0%, lightskyblue 100%);
+    text-align: center;
+}
+
+.logo {
+    font-size: 4rem;
+    color:  lightskyblue;
+    text-shadow: 1px 1px 2px black, 0 0 0.1em seagreen;
+    
+}
+
+.logo span {
+    color: mediumspringgreen;
+    text-shadow: 1px 1px 2px black, 0 0 0.1em midnightblue;
+}
+
+.calculator {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.total, .ingredients {
+    min-width: 500px;
+    padding: 20px;
+}
