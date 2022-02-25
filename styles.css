@@ -1,3 +1,8 @@
+:root {
+    --protein: lightskyblue;
+    --carbs: mediumspringgreen;
+    --fat: rgb(224, 205, 92);
+}
 
 body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -28,4 +33,37 @@ body {
 .total, .ingredients {
     min-width: 500px;
     padding: 20px;
+}
+
+.pie-chart {
+    height: 250px;
+    width: 250px;
+    margin: 50px auto;
+    border: 5px double white;
+    border-radius: 50%;
+    background: conic-gradient(var(--protein) 0% 30%, var(--carbs) 30% 75%, var(--fat) 75% 100%);
+}
+
+.total-list{
+    width: 50%;
+    margin: 0 auto;
+    text-align: left;
+    list-style: none;
+}
+
+.total-list li:before {
+    content: "\23FA \00A0";
+    text-shadow: 0 0 0.1em midnightblue;
+}
+
+.protein:before{
+    color: var(--protein);
+}
+
+.carbs:before{
+    color: var(--carbs);
+}
+
+.fat:before{
+    color: var(--fat);
 }
