@@ -3,11 +3,12 @@
     <head>
         <meta charset="UTF-8">
         <title>CalorCalc</title>
+        <link rel='icon' href='./img/logo.png'>
         <link rel="stylesheet" href="./styles.css">
     </head>
     <body>
         <div>
-            <h1 class="logo"> <span>Calor</span>Calc</h1>
+            <h1 class="logo">  <span>Cal<i title="logo" style="--size: 4rem"></i>r</span>Calc</h1>
             <p> Add your ingredients to calculate your total meal nutritional values:</p>
         </div>
         <div class="calculator">
@@ -23,6 +24,32 @@
             </div>
             <div class="ingredients">
                 <h2>List of ingredients</h2>
+                <ul>
+                    <li class="ingredient-item">
+                        <header>
+                            <h5>Product name</h5>
+						    <div>
+                                <i title="edit"></i>
+						        <i title="delete"></i>
+                            </div>
+                        </header>
+                        <small>Total: 500g | Protein: 40g | Carbs: 40g | Fat: 40g</small>
+                    </li>
+                    <li class="ingredient-item">
+                        <header>
+                            <h5>Product name</h5>
+						    <div>
+                                <i title="edit"></i>
+						        <i title="delete"></i>
+                            </div>
+                        </header>
+                        <small>Total: 500g | Protein: 40g | Carbs: 40g | Fat: 40g</small>
+                    </li>
+                </ul>
+                <p id="empy-list-message" style="display: none">
+                    Oh, you have no ingredients in your list!<br/> 
+                    Add some products to calculate :)
+                </p><i title="add" style="--size: 32px"></i> 
             </div>
         </div>
     </body>

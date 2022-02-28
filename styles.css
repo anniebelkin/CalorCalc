@@ -4,6 +4,28 @@
     --fat: rgb(224, 205, 92);
 }
 
+h1, h2, h3, h4, h5 {
+    margin: 0;
+}
+
+ul {
+    text-align: left;
+    list-style: none;
+}
+
+i {
+    margin: 0 5px;
+    display: inline-block;
+    vertical-align:middle;
+    height: calc(var(--size, 24px));
+    width: calc(var(--size, 24px));
+}
+
+i:hover {
+    transform: scale(1.4);
+    cursor: pointer;
+}
+
 body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: midnightblue;
@@ -66,4 +88,62 @@ body {
 
 .fat:before{
     color: var(--fat);
+}
+
+.ingredient-item {
+    border: 1px solid midnightblue;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.ingredient-item header {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Animated Icons */ 
+
+i[title = "logo"] {
+    background: url("./img/logo.png") no-repeat 0 0;
+    background-size: contain;
+}
+
+i[title = "logo"]:hover {
+    background-image: url("./img/logo.gif");
+}
+
+i[title = "add"] {
+    background: url("./img/add.png") no-repeat 0 0;
+    background-size: contain;
+}
+
+i[title = "add"]:hover {
+    background-image: url("./img/add.gif");
+}
+
+i[title = "edit"] {
+    background: url("./img/edit.png") no-repeat 0 0;
+    background-size: contain;
+}
+
+i[title = "edit"]:hover {
+    background-image: url("./img/edit.gif");
+}
+
+i[title = "delete"] {
+    background: url("./img/delete.png") no-repeat 0 0;
+    background-size: contain;
+}
+
+i[title = "delete"]:hover {
+    background-image: url("./img/delete.gif");
+}
+
+i[title = "delete"] {
+    background: url("./img/delete.png") no-repeat 0 0;
+    background-size: contain;
+}
+
+i[title = "delete"]:hover {
+    background-image: url("./img/delete.gif");
 }
