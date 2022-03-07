@@ -14,22 +14,22 @@
         <div class="flexed">
             <section>
                 <h2>Your Meal</h2>
-                <div class="pie-chart"></div>
+                <div class="pie-chart frame"></div>
                 <h4>Total calories: <span id="total-cal">1000</span><sub>cal/100g</sub></h4>
                 <hr/>
                 <div class="flexed">
-                    <i id="protein-%" class="bullet flexed protein">30%</i> 
+                    <i id="protein-%" class="bullet flexed frame protein">30%</i> 
                     <p>Protein (<span id="total-protein">40</span><sub>g</sub>)</p>
-                    <i id="carbs-%" class="bullet flexed carbs">45%</i> 
+                    <i id="carbs-%" class="bullet flexed frame carbs">45%</i> 
                     <p>Carbs (<span id="total-carbs">50</span><sub>g</sub>)</p>
-                    <i id="fat-%" class="bullet flexed fat">25%</i> 
+                    <i id="fat-%" class="bullet flexed frame fat">25%</i> 
                     <p>Fat (<span id="total-fat">10</span><sub>g</sub>)</p>
                 </div>
             </section>
             <section>
                 <h2>List of ingredients</h2>
                 <ul>
-                    <li class="ingredient flexed">
+                    <li class="ingredient flexed frame">
                         <header>
                             Product name
                             <hr/>
@@ -40,7 +40,7 @@
 						    <i title="delete"></i>
                         </nav>
                     </li>
-                    <li class="ingredient flexed">
+                    <li class="ingredient flexed frame">
                         <header>
                             Product name
                             <hr/>
@@ -52,11 +52,25 @@
                         </nav>
                     </li>
                 </ul>
-                <p id="empy-list-message">
+                <p id="empy-list-message" class="hidden">
                     Oh, you have no ingredients in your list!<br/> 
                     Add some products to calculate :)
                 </p><i title="add" style="--icon-size: 32px"></i> 
             </section>
+            <form class="hidden">
+                <span class="block-a"></span>
+                <span class="block-a"></span>
+                <span class="block-a"></span>
+                <span class="block-a"></span>
+                <span class="block-a"></span>
+                <span class="block-a"></span>
+                <span class="block-a"></span>
+                <span class="block-a"></span>
+                <span class="block-a"></span>
+                <fieldset class="block">
+                    <legend><h1>Add an ingredient</h1></legend>
+                </fieldset>
+            </form>
         </div>
     </body>
 </html>

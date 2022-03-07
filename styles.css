@@ -1,3 +1,7 @@
+:root {
+    --background-color: radial-gradient(circle, honeydew 0%, lightskyblue 100%) honeydew;;
+}
+
 ul {
     list-style: none;
 }
@@ -9,14 +13,19 @@ h2{
 hr {
     border: none;
     border-top: 1px solid midnightblue;
-    margin: 5px 0;
+    margin: 7px 0;
 }
+
 
 body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: midnightblue;
-    background: radial-gradient(circle, honeydew 0%, lightskyblue 100%) honeydew;
+    background: var(--background-color);
     text-align: center;
+}
+
+.hidden {
+    display: none;
 }
 
 .flexed {
@@ -24,6 +33,11 @@ body {
     justify-content: space-evenly;
     align-items: flex-start;
     flex-wrap: wrap;
+}
+
+.frame {
+    outline: 5px double lightcyan;
+    background-color:  lightcyan;
 }
 
 /* Colors */
@@ -44,7 +58,6 @@ body {
     --icon-size: 2rem;
     padding: 3px;
     margin: 5px 10px;
-    border: 1px solid midnightblue;
     border-radius: 50%;
     background-color: var(--color);
     font-size: 0.8rem;
@@ -55,21 +68,68 @@ body {
     height: 250px;
     width: 250px;
     margin: 0 auto;
-    border: 5px double white;
     border-radius: 50%;
     background: conic-gradient(lightskyblue 0% 30%, mediumspringgreen 30% 75%, PeachPuff 75% 100%);
 }
 
 .ingredient {
-    border: 1px solid midnightblue;
     padding: 10px;
     margin-bottom: 10px;
     text-align: left;
+    border: 1px solid black;
 }
 
-.empty-list-message {
-    display: none;
+/* Form */
+
+form {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0,0, 0, 0.9);
+    
 }
+
+fieldset {
+    background-color: darkslategrey;
+    border-color: rgb(19, 32, 32);
+    color:white;
+    min-width: 350px;
+    min-height: 350px;
+}
+
+/* Block animation */
+
+.block-a {
+    content: "";
+    position: absolute;
+    height: 34vh;
+    width: 34vw;
+    z-index: -1;
+}
+
+.block-a ~ .block {
+    width: max(33vw, 33vh);
+    height: max(33vw, 33vh);
+    --x: 0;
+    --y: 0;
+    box-shadow: var(--x) var(--y) 20px 0 black, 
+    inset var(--x) var(--y) 40px 20px rgba(0,0,0,0.2);
+    transition: all 0.5s linear;
+}
+
+.block-a:nth-child(-n+3){top: 0;}
+.block-a:nth-child(-n+3):hover ~ .block{--y: 10px;}
+.block-a:nth-child(n+7){bottom: 0;}
+.block-a:nth-child(n+7):hover ~ .block{--y: -10px;}
+.block-a:nth-child(3n+1){left: 0;}
+.block-a:nth-child(3n+1):hover ~ .block{--x: 10px;}
+.block-a:nth-child(3n){right: 0;}
+.block-a:nth-child(3n):hover ~ .block{--x: -10px;}
 
 /* Icons */ 
 
