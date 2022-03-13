@@ -55,22 +55,57 @@
                 <p id="empy-list-message" class="hidden">
                     Oh, you have no ingredients in your list!<br/> 
                     Add some products to calculate :)
-                </p><i title="add" style="--icon-size: 32px"></i> 
+                </p><i id="add-new-btn" title="add" style="--icon-size: 32px"></i> 
             </section>
-            <form class="hidden">
-                <span class="block-a"></span>
-                <span class="block-a"></span>
-                <span class="block-a"></span>
-                <span class="block-a"></span>
-                <span class="block-a"></span>
-                <span class="block-a"></span>
-                <span class="block-a"></span>
-                <span class="block-a"></span>
-                <span class="block-a"></span>
-                <fieldset class="block">
-                    <legend><h1>Add an ingredient</h1></legend>
-                </fieldset>
-            </form>
         </div>
+        <form class="hidden" onsubmit="return false">
+            <span class="block-a"></span>
+            <span class="block-a"></span>
+            <span class="block-a"></span>
+            <span class="block-a"></span>
+            <span class="block-a"></span>
+            <span class="block-a"></span>
+            <span class="block-a"></span>
+            <span class="block-a"></span>
+            <span class="block-a"></span>
+            <fieldset class="block">
+                <legend><h1>Add an ingredient</h1></legend>
+                <input id="i-name" type="text" name="name" placeholder="Indredient Name" required>
+                <table>
+                    <tr>
+                        <th>Amount (grams):</th>
+                        <th>100</th>
+                        <th>
+                            <input type="number" name="amount" min="0" value="100" required>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>Calories (cal):</th>
+                        <td><input type="number" name="cal-100" min="0" placeholder="calories in 100g"></td>
+                        <td><input type="number" name="cal" min="0" placeholder="calories in recepie" required></td>
+                    </tr>
+                    <tr>
+                        <th>Proteins (grams):</th>
+                        <td><input type="number" name="protein-100" min="0" placeholder="protein in 100g"></td>
+                        <td><input type="number" name="protein" min="0" placeholder="protein in recepie" required></td>
+                    </tr>
+                    <tr>
+                        <th>Carbs (grams):</th>
+                        <td><input type="number" name="carbs-100" min="0" placeholder="carbs in 100g"></td>
+                        <td><input type="number" name="carbs" min="0" placeholder="carbs in recepie" required></td>
+                    </tr>
+                    <tr>
+                        <th>Fat (grams):</th>
+                        <td><input type="number" name="fat-100" min="0" placeholder="fat in 100g"></td>
+                        <td><input type="number" name="fat" min="0" placeholder="fat in recepie" required></td>
+                    </tr>
+                </table>
+                <input id="submit-btn" type="submit" value="Submit"> 
+                <input type="reset" value="Reset"> 
+                <input id="cancel-btn" type="button" value="Cancel">
+            </fieldset>
+        </form>
+        <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+        <script src="script.js"></script>
     </body>
 </html>
