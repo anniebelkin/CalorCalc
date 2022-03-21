@@ -27,35 +27,13 @@
                 </div>
             </section>
             <section>
-                <h2>List of ingredients</h2>
-                <ul>
-                    <li class="ingredient flexed frame">
-                        <header>
-                            Product name
-                            <hr/>
-                            <small>Total: 500g | Protein: 40g | Carbs: 40g | Fat: 40g</small>
-                        </header>
-						<nav>
-                            <i title="edit"></i>
-						    <i title="delete"></i>
-                        </nav>
-                    </li>
-                    <li class="ingredient flexed frame">
-                        <header>
-                            Product name
-                            <hr/>
-                            <small>Total: 500g | Protein: 40g | Carbs: 40g | Fat: 40g</small>
-                        </header>
-						<nav>
-                            <i title="edit"></i>
-						    <i title="delete"></i>
-                        </nav>
-                    </li>
+                <h2>List of ingredients <i title="add" style="--icon-size: 32px"></i></h2>
+                <ul id="ingredients-list">
                 </ul>
                 <p id="empy-list-message" class="hidden">
                     Oh, you have no ingredients in your list!<br/> 
                     Add some products to calculate :)
-                </p><i id="add-new-btn" title="add" style="--icon-size: 32px"></i> 
+                </p> 
             </section>
         </div>
         <form id="modal" class="hidden" onsubmit="return false">
@@ -87,17 +65,17 @@
                     <tr>
                         <th>Proteins (grams):</th>
                         <td><input type="number" name="protein-100" min="0.00" max="100.00" step="0.01" placeholder="protein in 100g"></td>
-                        <td><input type="number" name="protein" min="0.00" max="100.00" step="0.01" placeholder="protein in recepie" required></td>
+                        <td><input type="number" name="protein" min="0.00" step="0.01" placeholder="protein in recepie" required></td>
                     </tr>
                     <tr>
                         <th>Carbs (grams):</th>
                         <td><input type="number" name="carbs-100" min="0.00" max="100.00" step="0.01" placeholder="carbs in 100g"></td>
-                        <td><input type="number" name="carbs" min="0.00" max="100.00" step="0.01" placeholder="carbs in recepie" required></td>
+                        <td><input type="number" name="carbs" min="0.00" step="0.01" placeholder="carbs in recepie" required></td>
                     </tr>
                     <tr>
                         <th>Fat (grams):</th>
                         <td><input type="number" name="fat-100" min="0.00" max="100.00" step="0.01" placeholder="fat in 100g"></td>
-                        <td><input type="number" name="fat" min="0.00" max="100.00" step="0.01" placeholder="fat in recepie" required></td>
+                        <td><input type="number" name="fat" min="0.00" step="0.01" placeholder="fat in recepie" required></td>
                     </tr>
                 </table>
                 <input type="submit" value="Submit"> 
