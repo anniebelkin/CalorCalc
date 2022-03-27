@@ -3,6 +3,27 @@
     const nutrients = ["cal", "protein", "carbs", "fat"];
 
     const state = {
+        meal: {
+            amount: 0,
+            cal: 0,
+            protein: 0,
+            carbs: 0,
+            fat: 0,
+            getRatio: function(type){
+                return this[type] / this.amount;
+            },
+            add: function(data){
+                for (type of ["amount", ...nutrients]){
+                    this[type] += parseInt(data[type]);
+                }
+            },
+            remove: function(target){
+                const data = JSON.parse(target.attr("data-json"));
+                for (type of ["amount", ...nutrients]){
+                    this[type] -= parseInt(data[type]);
+                }
+            }
+        },
         update: {
             isActive: false,
             pointer: {},
@@ -64,6 +85,10 @@
                 }
                 this.open();
             }
+        },
+        totalDisplay: {
+            section: $("#total-meal-display"),
+            data: {}
         }
     };
 
@@ -72,6 +97,11 @@
         if (this.name != "") {
             DOM.form.inputs[this.name] = $(this);
         }
+    });
+
+    DOM.totalDisplay.pieChart = DOM.totalDisplay.section.children(".pie-chart");
+    DOM.totalDisplay.section.find("i, span, input").each( function(){
+        DOM.totalDisplay.data[this.id] = $(this);
     });
 
     const createIngredientListItem = (ingredient) => {
@@ -104,6 +134,21 @@
         return data;
     };
 
+    const updateMealDisplay = () => {
+        const display=  DOM.totalDisplay.data,
+            data = state.meal;
+        const portion = display.portion.val();
+        for (type of nutrients){
+            display["total-"+type].text(Math.round(data.getRatio(type) * portion));
+            if (type !== "cal") {
+                const percent = Math.round(data.getRatio(type) * 100) + "%";
+                display[type+"-%"].text(percent);
+            };
+        }
+    };
+
+    DOM.totalDisplay.data.portion.change(updateMealDisplay);
+
     DOM.ingredientsList.parent().click((e) => {
         const target = e.target;
         switch (target.title) {
@@ -115,7 +160,10 @@
                 DOM.form.editItem(state.update.data);
                 break;
             case "delete":
-                $(target).closest("li").remove();
+                const item = $(target).closest("li");
+                state.meal.remove(item);
+                item.remove();
+                updateMealDisplay();
                 break;  
         }
     });
@@ -128,11 +176,14 @@
         const data = getData();
         const listItem = createIngredientListItem(data);
         if (state.update.isActive){
+            state.meal.remove(state.update.pointer);
             state.update.pointer.replaceWith(listItem);
             state.update.resolve();
         } else {
             DOM.ingredientsList.append(listItem);
         }
+        state.meal.add(data);
+        updateMealDisplay();
         DOM.form.close();
     });
 

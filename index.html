@@ -12,28 +12,26 @@
             <p> Add your ingredients to calculate your total meal nutritional values:</p>
         </header>
         <div class="flexed">
-            <section>
+            <section id="total-meal-display">
                 <h2>Your Meal</h2>
                 <div class="pie-chart frame"></div>
-                <h4>Total calories: <span id="total-cal">1000</span><sub>cal/100g</sub></h4>
+                <h4>Total calories: <span id="total-cal">0</span><sub>cal/</sub>
+                    <input id="portion" type="number" value="100"><sub>g</sub>
+                </h4>
                 <hr/>
                 <div class="flexed">
-                    <i id="protein-%" class="bullet flexed frame protein">30%</i> 
-                    <p>Protein (<span id="total-protein">40</span><sub>g</sub>)</p>
-                    <i id="carbs-%" class="bullet flexed frame carbs">45%</i> 
-                    <p>Carbs (<span id="total-carbs">50</span><sub>g</sub>)</p>
-                    <i id="fat-%" class="bullet flexed frame fat">25%</i> 
-                    <p>Fat (<span id="total-fat">10</span><sub>g</sub>)</p>
+                    <i id="protein-%" class="bullet flexed frame protein">0%</i> 
+                    <p>Protein (<span id="total-protein">0</span><sub>g</sub>)</p>
+                    <i id="carbs-%" class="bullet flexed frame carbs">0%</i> 
+                    <p>Carbs (<span id="total-carbs">0</span><sub>g</sub>)</p>
+                    <i id="fat-%" class="bullet flexed frame fat">0%</i> 
+                    <p>Fat (<span id="total-fat">0</span><sub>g</sub>)</p>
                 </div>
             </section>
             <section>
                 <h2>List of ingredients <i title="add" style="--icon-size: 32px"></i></h2>
                 <ul id="ingredients-list">
                 </ul>
-                <p id="empy-list-message" class="hidden">
-                    Oh, you have no ingredients in your list!<br/> 
-                    Add some products to calculate :)
-                </p> 
             </section>
         </div>
         <form id="modal" class="hidden" onsubmit="return false">
