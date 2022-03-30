@@ -10,6 +10,7 @@
             carbs: 0,
             fat: 0,
             getRatio: function(type){
+                if (this.amount === 0) return 0;
                 return this[type] / this.amount;
             },
             add: function(data){
@@ -66,6 +67,14 @@
                     else {
                         this.updateTotal(target.name.slice(0,-4), target.value, this.amount.val())
                     }
+                },
+                isValid: function(){
+                    const sum = parseInt(this.protein.val()) + parseInt(this.carbs.val()) + parseInt(this.fat.val());
+                    if ( sum > parseInt(this.amount.val())){
+                        alert("The sum amount of protein, carbs and fat cant be bigger than the total ingredient amount");
+                        return false;
+                    }
+                    return true;
                 }
             },
             open: function(){
@@ -134,20 +143,26 @@
         return data;
     };
 
-    const updateMealDisplay = () => {
-        const display=  DOM.totalDisplay.data,
-            data = state.meal;
-        const portion = display.portion.val();
+    const updateTotalDisplay = (portion) => {
         for (type of nutrients){
-            display["total-"+type].text(Math.round(data.getRatio(type) * portion));
-            if (type !== "cal") {
-                const percent = Math.round(data.getRatio(type) * 100) + "%";
-                display[type+"-%"].text(percent);
-            };
+            DOM.totalDisplay.data["total-"+type].text(Math.round(state.meal.getRatio(type) * portion));
         }
+    }
+
+    const updateMealDisplay = () => {
+        updateTotalDisplay(DOM.totalDisplay.data.portion.val());
+        const pieChart = {}
+        for (type of ["protein", "carbs", "fat"]) {
+            const percent = Math.round(state.meal.getRatio(type) * 100) + "%";
+            DOM.totalDisplay.data[type+"-%"].text(percent);
+            pieChart["--"+type] = percent;
+        };
+        DOM.totalDisplay.pieChart.css(pieChart);
     };
 
-    DOM.totalDisplay.data.portion.change(updateMealDisplay);
+    DOM.totalDisplay.data.portion.change((e) => {
+        updateTotalDisplay(e.target.value);
+    });
 
     DOM.ingredientsList.parent().click((e) => {
         const target = e.target;
@@ -173,18 +188,20 @@
     });
 
     DOM.form.modal.submit(() => {
-        const data = getData();
-        const listItem = createIngredientListItem(data);
-        if (state.update.isActive){
-            state.meal.remove(state.update.pointer);
-            state.update.pointer.replaceWith(listItem);
-            state.update.resolve();
-        } else {
-            DOM.ingredientsList.append(listItem);
+        if (DOM.form.inputs.isValid()){
+            const data = getData();
+            const listItem = createIngredientListItem(data);
+            if (state.update.isActive){
+                state.meal.remove(state.update.pointer);
+                state.update.pointer.replaceWith(listItem);
+                state.update.resolve();
+            } else {
+                DOM.ingredientsList.append(listItem);
+            }
+            state.meal.add(data);
+            updateMealDisplay();
+            DOM.form.close();
         }
-        state.meal.add(data);
-        updateMealDisplay();
-        DOM.form.close();
     });
 
     DOM.form.inputs.cancel.click(() => DOM.form.close());

@@ -92,11 +92,19 @@ body {
 }
 
 .pie-chart {
+    --protein: 0%;
+    --carbs: 0%;
+    --fat: 0%;
+    --carbs-range: calc(var(--protein) + var(--carbs));
+    --fat-range: calc(var(--carbs-range) + var(--fat));
     height: 250px;
     width: 250px;
     margin: 0 auto;
     border-radius: 50%;
-    background: conic-gradient(lightskyblue 0% 30%, mediumspringgreen 30% 75%, PeachPuff 75% 100%);
+    background: conic-gradient(lightskyblue 0% var(--protein), 
+                            mediumspringgreen var(--protein) var(--carbs-range), 
+                            PeachPuff var(--carbs-range) var(--fat-range),
+                            white var(--fat-range) 100%);
 }
 
 .ingredient {
